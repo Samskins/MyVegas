@@ -12,7 +12,7 @@ namespace MyVegasBot
         {
             int[] coords = new int[4];
             Bitmap screen;
-            Log(string.Format("Attempting to calibrate on {0}, please wait...", Thread.CurrentThread.IsBackground));
+            Log("Attempting to calibrate on, please wait...");
             Thread.Sleep(1);
             while (coords[0] == 0 && coords[1] == 0 && coords[2] == 0 && coords[3] == 0)
             {
@@ -21,7 +21,7 @@ namespace MyVegasBot
                 coords[1] = CompareBitmaps.GetLocation(Resources.fbBanner, screen, 0, 0, screen.Width, screen.Height)[1]; //get y-co from top border
                 coords[2] = CompareBitmaps.GetLocation(Resources.fbRight, screen, 0, 0, screen.Width, screen.Height)[0]; //get x-co from right side
                 coords[3] = CompareBitmaps.GetLocation(Resources.fbBottom, screen, 0, 0, screen.Width, screen.Height)[1]; //get y-co from bottom
-                Log("failed, reattempting...");
+                Log(".");
                 Thread.Sleep(5000);
             }
             Log("Calibration succeeded.");
