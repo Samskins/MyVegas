@@ -1,0 +1,9 @@
+C:\Users\582955\Documents\Visual Studio 2015\Projects\MyVegasBot\MyVegasBot\obj\Debug\MyVegasBot.Form1.resources
+C:\Users\582955\Documents\Visual Studio 2015\Projects\MyVegasBot\MyVegasBot\obj\Debug\MyVegasBot.csproj.GenerateResource.Cache
+C:\Users\582955\Documents\Visual Studio 2015\Projects\MyVegasBot\MyVegasBot\bin\Debug\MyVegasBot.exe.config
+C:\Users\582955\Documents\Visual Studio 2015\Projects\MyVegasBot\MyVegasBot\bin\Debug\MyVegasBot.exe
+C:\Users\582955\Documents\Visual Studio 2015\Projects\MyVegasBot\MyVegasBot\bin\Debug\MyVegasBot.pdb
+C:\Users\582955\Documents\Visual Studio 2015\Projects\MyVegasBot\MyVegasBot\obj\Debug\MyVegasBot.Properties.Resources.resources
+C:\Users\582955\Documents\Visual Studio 2015\Projects\MyVegasBot\MyVegasBot\obj\Debug\MyVegasBot.exe
+C:\Users\582955\Documents\Visual Studio 2015\Projects\MyVegasBot\MyVegasBot\obj\Debug\MyVegasBot.pdb
+C:\Users\582955\Documents\Visual Studio 2015\Projects\MyVegasBot\MyVegasBot\obj\Debug\MyVegasBot.csprojResolveAssemblyReference.cache
