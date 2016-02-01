@@ -7,3 +7,6 @@ C:\Users\582955\Documents\Visual Studio 2015\Projects\MyVegasBot\MyVegasBot\obj\
 C:\Users\582955\Documents\Visual Studio 2015\Projects\MyVegasBot\MyVegasBot\obj\Debug\MyVegasBot.exe
 C:\Users\582955\Documents\Visual Studio 2015\Projects\MyVegasBot\MyVegasBot\obj\Debug\MyVegasBot.pdb
 C:\Users\582955\Documents\Visual Studio 2015\Projects\MyVegasBot\MyVegasBot\obj\Debug\MyVegasBot.csprojResolveAssemblyReference.cache
+C:\Users\582955\Source\Repos\MyVegasBot\MyVegasBot\bin\Debug\MyVegasBot.exe.config
+C:\Users\582955\Source\Repos\MyVegasBot\MyVegasBot\obj\Debug\MyVegasBot.exe
+C:\Users\582955\Source\Repos\MyVegasBot\MyVegasBot\obj\Debug\MyVegasBot.pdb
