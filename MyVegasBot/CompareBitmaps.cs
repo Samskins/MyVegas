@@ -33,7 +33,7 @@ namespace MyVegasBot
                     }
                     else
                     {
-                        if(d == 0) //max candidates
+                        if(d == 0) //max candidate
                         {
                             foundX = x;
                             foundY = y;
