@@ -14,6 +14,7 @@ namespace MyVegasBot
         public int autoSpin { get; set; }
         public bool hide { get; set; }
         public Thread t { get; set; }
+        public bool testMode { get; set; }
         public static Form1 _Form1;
         public Form1()
         {
@@ -28,6 +29,8 @@ namespace MyVegasBot
             this.Stop.Enabled = false;
             //Instance of form
             _Form1 = this;
+            //testmode
+            testMode = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -117,8 +120,7 @@ namespace MyVegasBot
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            t.Abort();
-            this.Close();
+            Environment.Exit(0);
         }
         
         private void excaliburToolStripMenuItem_Click(object sender, EventArgs e)
@@ -191,7 +193,62 @@ namespace MyVegasBot
                 this.Invoke(new Action<string>(Log), new object[] { s });
                 return;
             }
-            textBox1.AppendText(s + Environment.NewLine);
+
+            if (s.Substring(0,1) != "/")
+            {
+                s += Environment.NewLine;
+            }
+            else
+            {
+                s = s.Substring(1);
+            }
+            textBox1.AppendText(s);
+        }
+
+        private void showPicturesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(showPicturesToolStripMenuItem.CheckState == CheckState.Checked)
+            {
+                pictureBox1.Enabled = true;
+                pictureBox2.Enabled = true;
+                pictureBox1.Visible = true;
+                pictureBox2.Visible = true;
+                this.ClientSize = new System.Drawing.Size(ClientSize.Width + pictureBox1.Bounds.Width, 300);
+            }
+            else if(showPicturesToolStripMenuItem.CheckState == CheckState.Unchecked)
+            {
+                pictureBox1.Enabled = false;
+                pictureBox2.Enabled = false;
+                pictureBox1.Visible = false;
+                pictureBox2.Visible = false;
+                this.ClientSize = new System.Drawing.Size(ClientSize.Width - pictureBox1.Bounds.Width, 300);
+            }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            using (Form1 newForm = new Form1())
+            {
+                newForm.ShowDialog();
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            using (Form1 newForm = new Form1())
+            {
+                newForm.ShowDialog();
+            }
+        }
+
+        private void testModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            if (testModeToolStripMenuItem.CheckState == CheckState.Checked)
+                testMode = true;
+            else if(testModeToolStripMenuItem.CheckState == CheckState.Unchecked)
+                testMode = false;
+
         }
     }
 }

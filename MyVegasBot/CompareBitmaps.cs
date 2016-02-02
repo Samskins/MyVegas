@@ -18,6 +18,8 @@ namespace MyVegasBot
         {
             int[] result = new int[2];
             int max = 0, foundX = 0, foundY = 0, maxX = 0, maxY = 0, c = 0, d;
+            Form1._Form1.pictureBox1.Image = bigImg;
+            Form1._Form1.pictureBox2.Image = smallImg;
             LockBitmap lockSmall = new LockBitmap(smallImg);
             LockBitmap lockBig = new LockBitmap(bigImg);
             lockSmall.LockBits(); lockBig.LockBits();  //lock the bits
@@ -58,11 +60,14 @@ namespace MyVegasBot
                     }
                 }
             }
-
-            if(maxX == 0 && maxY == 0)
+            
+            //check if atleast one row of the image was found competely
+            if(max < lockSmall.Width)
             {
-                
+                lockSmall.UnlockBits(); lockBig.UnlockBits();
+                return result;
             }
+
             lockSmall.UnlockBits(); lockBig.UnlockBits();
             result[0] = maxX; result[1] = maxY;
             return result;
@@ -71,6 +76,8 @@ namespace MyVegasBot
         public static bool isEqual(Bitmap image1, Bitmap image2)
         {
             bool equal = true;
+            Form1._Form1.pictureBox1.Image = image2;
+            Form1._Form1.pictureBox2.Image = image1;
             LockBitmap lock1 = new LockBitmap(image1);
             LockBitmap lock2 = new LockBitmap(image2);
             lock1.LockBits(); lock2.LockBits();  //lock the bits
@@ -92,6 +99,8 @@ namespace MyVegasBot
 
         public static void Differences(Bitmap image1, Bitmap image2)
         {
+            Form1._Form1.pictureBox1.Image = image2;
+            Form1._Form1.pictureBox2.Image = image1;
             LockBitmap lock1 = new LockBitmap(image1);
             LockBitmap lock2 = new LockBitmap(image2);
             lock1.LockBits(); lock2.LockBits();  //lock the bits
