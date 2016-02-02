@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace MyVegasBot
 {
-    public class ScreenCapture
+    public class Screen
     {
         private static IntPtr handle { get; set; }
         public static Bitmap fullScreen { get; set; }
@@ -25,13 +25,13 @@ namespace MyVegasBot
             }
         }
 
-        public static Bitmap Shot(string browser)
+        public static Bitmap Shot()
         {
-            ActivateWin(browser);
+            ActivateWin(Form1._Form1.browser);
             if (DllStuff.IsWinVIs(handle))
             {
                 Thread.Sleep(500);
-                Rectangle bounds = Screen.GetBounds(Point.Empty);
+                Rectangle bounds = System.Windows.Forms.Screen.GetBounds(Point.Empty);
                 fullScreen = new Bitmap(bounds.Width, bounds.Height, PixelFormat.Format24bppRgb);
 
                 using (Graphics g = Graphics.FromImage(fullScreen))

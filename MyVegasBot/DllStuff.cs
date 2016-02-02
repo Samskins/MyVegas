@@ -49,8 +49,6 @@ namespace MyVegasBot
             // Simulate a key press
             keybd_event((byte)ALT, 0x45, EXTENDEDKEY | 0, 0);
 
-            //SetForegroundWindow(mainWindowHandle);
-
             // Simulate a key release
             keybd_event((byte)ALT, 0x45, EXTENDEDKEY | KEYUP, 0);
 

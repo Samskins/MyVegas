@@ -14,6 +14,7 @@ namespace MyVegasBot
         public int autoSpin { get; set; }
         public bool hide { get; set; }
         public Thread t { get; set; }
+        public static Form1 _Form1;
         public Form1()
         {
             InitializeComponent();
@@ -21,8 +22,12 @@ namespace MyVegasBot
             this.browser = chromeToolStripMenuItem.Text;
             //Defualt Game is Excalibur.
             this.Game = excaliburToolStripMenuItem.Text;
+            //Default hide on start value
             this.hide = false;
+            //Defualt stop button state
             this.Stop.Enabled = false;
+            //Instance of form
+            _Form1 = this;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -41,13 +46,11 @@ namespace MyVegasBot
                 {
                     Excalibur ex = new Excalibur();
                     t = new Thread(ex.Start);
-                    Log(string.Format("The thread is: {0}", t.ThreadState));
                     Log(string.Format("Starting {0}...", Game));
                     this.AutoSpin.Enabled = false;
                     this.Start.Enabled = false;
                     this.Stop.Enabled = true;
                     t.Start();
-                    Log(string.Format("The thread is now: {0}", t.ThreadState));
                     while (!t.IsAlive) ;
                     Thread.Sleep(1);
                     if (hide) Hide();
@@ -61,9 +64,7 @@ namespace MyVegasBot
             if (t.IsAlive == true)
             {
                 Log(string.Format("{0} stopped...", Game));
-                Log(string.Format("The thread is: {0}", t.ThreadState));
                 t.Abort();
-                Log(string.Format("And now the thread is: {0}", t.ThreadState));
                 this.AutoSpin.Enabled = true;
                 this.Start.Enabled = true;
                 this.Stop.Enabled = false;
@@ -183,7 +184,7 @@ namespace MyVegasBot
             this.Show();
             this.WindowState = FormWindowState.Normal;
         }
-         public void Log(string s)
+        public void Log(string s)
         {
             if (InvokeRequired)
             {

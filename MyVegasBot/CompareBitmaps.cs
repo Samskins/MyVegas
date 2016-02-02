@@ -89,5 +89,25 @@ namespace MyVegasBot
             lock1.UnlockBits(); lock2.UnlockBits();
             return equal;
         }
+
+        public static void Differences(Bitmap image1, Bitmap image2)
+        {
+            LockBitmap lock1 = new LockBitmap(image1);
+            LockBitmap lock2 = new LockBitmap(image2);
+            lock1.LockBits(); lock2.LockBits();  //lock the bits
+            for (int y = 0; y < lock1.Height; y++)
+            {
+                for (int x = 0; x < lock1.Width; x++)
+                {
+                    if (lock2.GetPixel(x, y) != lock1.GetPixel(x, y))
+                    {
+                        lock1.SetPixel(x, y, Color.Red);
+                    }
+                }
+            }
+            lock1.UnlockBits(); lock2.UnlockBits(); 
+            image1.Save("C:\\result.jpg");
+            //return image1;
+        }
     }
 }
