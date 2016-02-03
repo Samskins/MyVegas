@@ -41,7 +41,7 @@ namespace MyVegasBot.Slots.Excalibur
                 if (checker[0] != 0 || checker[1] != 0)
                 {
                     Form1._Form1.Log(string.Format("Found {0}...", image.Key));
-                    images = images.ToDictionary(a => a.Key, a => a.Value + 1); //+1 to the successful images
+                    images[image.Key]++; //+1 to the successful images
                     ImageLogic(image.Key); // perform additional logic to find images
                     Form1._Form1.MoveCursorAndClick(checker[0] + checker[0]/5, checker[1] + checker[1]/5); //move mouse to spot and give 20% leway on x and y
                 }
