@@ -33,12 +33,10 @@ namespace MyVegasBot.Slots.Excalibur
         void Search()
         {
             Bitmap s = Screen.Shot();
-            //try to figure
-            ResourceManager rm = new ResourceManager("MyVegasBot.Properties", Assembly.GetExecutingAssembly());
-            rm.GetString("start");
+            ResourceManager rm = new ResourceManager("MyVegasBot.Properties.Resources", Assembly.GetExecutingAssembly());
             foreach (var image in images)
             {
-                //checker = CompareBitmaps.GetLocation(rm.GetString(image.Key), s, coords[0], coords[1], coords[2], coords[3]);
+                checker = CompareBitmaps.GetLocation((Bitmap)rm.GetObject(image.Key), s, coords[0], coords[1], coords[2], coords[3]);
                 Form1._Form1.Log(string.Format("Searching for {0}...", image.Key));
                 if (checker[0] != 0 || checker[1] != 0)
                 {
