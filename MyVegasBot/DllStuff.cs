@@ -9,6 +9,8 @@ namespace MyVegasBot
         private const int ALT = 0xA4;
         private const int EXTENDEDKEY = 0x1;
         private const int KEYUP = 0x2;
+        private const int CTRL = 0xA2;
+        private const int ZERO = 0x60;
         private const uint Restore = 9;
         private const int MOUSEEVENTF_LEFTDOWN = 0x0002;
         private const int MOUSEEVENTF_LEFTUP = 0x0004;
@@ -46,11 +48,20 @@ namespace MyVegasBot
                 ShowWindow(mainWindowHandle, Restore);
             }
 
-            // Simulate a key press
+            // Simulate alt key press
             keybd_event((byte)ALT, 0x45, EXTENDEDKEY | 0, 0);
 
-            // Simulate a key release
+            // Simulate alt key release
             keybd_event((byte)ALT, 0x45, EXTENDEDKEY | KEYUP, 0);
+
+            // Simulate ctrl+0 for default zoom
+            keybd_event((byte)CTRL, 0x45, EXTENDEDKEY | 0, 0);
+
+            keybd_event((byte)ZERO, 0x45, EXTENDEDKEY | 0, 0);
+
+            keybd_event((byte)CTRL, 0x45, EXTENDEDKEY | KEYUP, 0);
+
+            keybd_event((byte)ZERO, 0x45, EXTENDEDKEY | KEYUP, 0);
 
             SetForegroundWindow(mainWindowHandle);
         }

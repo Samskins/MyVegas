@@ -62,11 +62,11 @@ namespace MyVegasBot
             }
             
             //check if atleast one row of the image was found competely
-            if(max < lockSmall.Width)
-            {
-                lockSmall.UnlockBits(); lockBig.UnlockBits();
-                return result;
-            }
+            //if(max < lockSmall.Width)
+            //{
+            //    lockSmall.UnlockBits(); lockBig.UnlockBits();
+            //    return result;
+            //}
 
             lockSmall.UnlockBits(); lockBig.UnlockBits();
             result[0] = maxX; result[1] = maxY;
