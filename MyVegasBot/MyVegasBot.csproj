@@ -147,6 +147,96 @@
   <ItemGroup>
     <None Include="Slots\Excalibur\Images\VblackjackLogo.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\25.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\500.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\excalibur.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\start.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\topBorder.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\knightDate.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\knightFight.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\OK.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\botBorder.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\excalibur.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\1001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\2001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\101.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\251.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\1002.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\2002.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\102.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\252.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\10.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\25.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\50.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\100.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\200.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\500.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\OKAY.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\exit.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\freeSpinWinnings.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Slots\Excalibur\Images\sendGift.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

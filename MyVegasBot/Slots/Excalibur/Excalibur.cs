@@ -2,53 +2,85 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Drawing;
-using MyVegasBot.Properties;
 using System.Resources;
 using System.Reflection;
+using System.Diagnostics;
 
 namespace MyVegasBot.Slots.Excalibur
 {
-    class Excalibur
+    public class Excalibur
     {
-        public int[] coords { get; set; }
-        public int[] checker { get; set; }
-        public Dictionary<string, int> images { get; set; } //key = bitmap, value = times encountered successfully
+        private int[] screenCoords { get; set; }
+        private int[] cursorCoords { get; set; }
+        private int count { get; set; }
+        private Bitmap s { get; set; }
+        private Bitmap rmGetBitmap { get; set; }
+        private Bitmap stuck { get; set; }
+        private TimeSpan ts { get; set; }
+        private Stopwatch stopWatch { get; set; }
+        private Dictionary<string, int> images { get; set; }
+        private readonly ResourceManager rm = new ResourceManager("MyVegasBot.Properties.Resources", Assembly.GetExecutingAssembly());
         public void Start()
         {
-            coords = new int[4];
-            Calibrate calibrate = new Calibrate();
-            coords = calibrate.Border();  //[0] = topX, [1] topY, [2] botY, [3] botX
+            stopWatch = new Stopwatch();
+            stopWatch.Start();
+            ts = stopWatch.Elapsed;
+            screenCoords = new int[4];
+            stuck = Screen.Shot();
+            screenCoords = MyVegasBot.Calibrate.Border();
             enterImages();
 
             while (true)
             {
                 Form1._Form1.Log("Checking for possible bonus games...");
                 Search();
-                Thread.Sleep(10000); //take a rest, 10 seconds
+                Thread.Sleep(10000);
             }
         }
 
-        void Search()
+        private void Search()
         {
-            Bitmap s = Screen.Shot();
-            ResourceManager rm = new ResourceManager("MyVegasBot.Properties.Resources", Assembly.GetExecutingAssembly());
-            foreach (var image in images)
+            s = Screen.Shot();
+            foreach (var image in images.ToList())
             {
-                checker = CompareBitmaps.GetLocation((Bitmap)rm.GetObject(image.Key), s, coords[0], coords[1], coords[2], coords[3]);
+                rmGetBitmap = (Bitmap)rm.GetObject(image.Key);
+                cursorCoords = CompareBitmaps.GetLocation(rmGetBitmap, s, screenCoords[0], screenCoords[1], screenCoords[2], screenCoords[3]);
                 Form1._Form1.Log(string.Format("Searching for {0}...", image.Key));
-                if (checker[0] != 0 || checker[1] != 0)
+                if (cursorCoords[0] != 0 || cursorCoords[1] != 0)
                 {
+                    count = 0;
                     Form1._Form1.Log(string.Format("Found {0}...", image.Key));
-                    images[image.Key]++; //+1 to the successful images
-                    ImageLogic(image.Key); // perform additional logic to find images
-                    Form1._Form1.MoveCursorAndClick(checker[0] + checker[0]/5, checker[1] + checker[1]/5); //move mouse to spot and give 20% leway on x and y
+                    images[image.Key]++;
+                    ImageLogic(image.Key, rmGetBitmap);
+                }
+                else
+                {
+                    if (count % 21 == 0)
+                    {
+                        stuck = Screen.Shot();
+                    }
+                    count++;
+                }
+            }
+
+            if (ts.Seconds >= 60 && CompareBitmaps.isEqual(stuck, s))
+            {
+                stopWatch.Restart();
+                Form1._Form1.Log("One minute without activity, checking for issues...");
+                var s1 = Screen.Shot();
+                Thread.Sleep(3000);
+                var s2 = Screen.Shot();
+                if (CompareBitmaps.isEqual(stuck, s1) || CompareBitmaps.isEqual(stuck, s2))
+                {
+                    FindAndClick("OK");
+                    FindAndClick("OKAY");
+                    FindAndClick("exit");
                 }
             }
         }
-        //add more logic like start -> 200, 500, 100?
-        void enterImages()
+
+        private void enterImages()
         {
             images = new Dictionary<string, int>();
             images.Add("start", 0);
@@ -59,92 +91,73 @@ namespace MyVegasBot.Slots.Excalibur
             images.Add("checkbox", 0);
             images.Add("jackpot", 0);
         }
-        
-        void ImageLogic(string img)
+
+        private void ImageLogic(string img, Bitmap bmp)
         {
             switch (img)
             {
                 case "start":
+                    Form1.MoveCursorAndClick(cursorCoords[0] + bmp.Width / 2, cursorCoords[1] + bmp.Height / 2);
+
+                    FindAndClick("_" + (Form1._Form1.autoSpin));
+                    break;
+                case "knightFight":
                     {
-                        Form1._Form1.MoveCursorAndClick(checker[0] + checker[0] / 5, checker[1] + checker[1] / 5);
-                        Search();
+                        var rnd = new Random();
+
+                        if (rnd.Next(2) == 0)
+                        {
+                            Form1.MoveCursorAndClick(cursorCoords[0] + bmp.Width / 5, cursorCoords[1] + bmp.Height / 2);
+                        }
+                        else
+                        {
+                            Form1.MoveCursorAndClick(cursorCoords[0] + bmp.Width * (4 / 5), cursorCoords[1] + bmp.Height / 2);
+                        }
+                        Thread.Sleep(7000);
+                        FindAndClick("OK");
+                        break;
                     }
+                case "knightDate":
+                    {
+                        var rnd = new Random();
+
+                        if (rnd.Next(2) == 0)
+                        {
+                            Form1.MoveCursorAndClick(cursorCoords[0] + bmp.Width / 5, cursorCoords[1] + bmp.Height / 2);
+                        }
+                        else
+                        {
+                            Form1.MoveCursorAndClick(cursorCoords[0] + bmp.Width * (4 / 5), cursorCoords[1] + bmp.Height / 2);
+                        }
+                        Thread.Sleep(7000);
+                        FindAndClick("exit");
+                        Thread.Sleep(1000);
+                        FindAndClick("OKAY");
+                        break;
+                    }
+                case "jackpot":
+                    FindAndClick("checkbox");
+                    Thread.Sleep(1000);
+                    FindAndClick("OKAY");
+                    break;
+                case "freeSpinWinnings":
+                    Thread.Sleep(2000);
+                    FindAndClick("OK");
+                    break;
+                case "sendGift":
+                    Thread.Sleep(2000);
+                    FindAndClick("exit");
                     break;
                 default:
                     break;
             }
         }
-
-        /*
-        SpecificSelection(image, X, Y)
-{
-	if (image = "start")
-	{
-		MouseClick, left, Add(X,40), Add(Y,15)
-		Sleep 2000
-		DetectImage("200", 50)
-	}
-	else if (image = "200")
-	{
-		MouseClick, left, Add(X,20), Add(Y,10)
-		MouseMove, 1400, 500
-	}
-	else if (image = "knightFight")
-	{
-		Random, rand, 1, 2
-		if(rand = 1){
-			MouseClick, left, Add(X,50), Add(Y,100)
-		}
-		else{
-			MouseClick, left, Add(X,250), Add(Y,100)
-		}
-		Sleep 7000
-		DetectImage("OK", 50)
-	}
-	else if (image = "knightDate")
-	{
-		Random, rand, 1, 2
-		if(rand = 1){
-			MouseClick, left, Add(X,50), Add(Y,100)
-		}
-		else{
-			MouseClick, left, Add(X,250), Add(Y,100)
-		}
-		Sleep 7000
-		DetectImage("exit", 50)
-	}
-	else if (image = "jackpot")
-	{
-		DetectImage("checkbox", 50)
-			MouseClick, left, Add(X,20), Add(Y,20)
-		DetectImage("OKAY", 50)
-	}
-	else if (image = "freeSpinWinnings")
-	{
-		Sleep 2000
-		DetectImage("OK", 50)
-	}
-	else if (image = "sendGift")
-	{
-		Sleep 2000
-		DetectImage("exit", 50)
-	}
-	else if (image = "OK")
-	{
-		MouseClick, left, Add(X,20), Add(Y,10)
-		MouseMove, 1400, 500
-	}
-	else if (image = "OKAY")
-	{
-		MouseClick, left, Add(X,20), Add(Y,10)
-		MouseMove, 1400, 500
-	}
-	else if (image = "exit")
-	{
-		MouseClick, left, Add(X,10), Add(Y,10)
-		MouseMove, 1400, 500
-	}
-	
-        */
+        private void FindAndClick(string str)
+        {
+            s = Screen.Shot();
+            rmGetBitmap = (Bitmap)rm.GetObject(str);
+            cursorCoords = CompareBitmaps.GetLocation(rmGetBitmap, s, screenCoords[0], screenCoords[1], screenCoords[2], screenCoords[3]);
+            Form1.MoveCursorAndClick(cursorCoords[0] + rmGetBitmap.Width / 2, cursorCoords[1] + rmGetBitmap.Height / 2);
+        }
     }
 }

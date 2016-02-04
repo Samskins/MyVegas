@@ -13,9 +13,17 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing)
             {
-                components.Dispose();
+                if (components != null)
+                {
+                    components.Dispose();
+                }
+                if (_Form1 != null)
+                {
+                    _Form1.Dispose();
+                    _Form1 = null;
+                }
             }
             base.Dispose(disposing);
         }
@@ -34,9 +42,10 @@
             this.Start = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hideOnStartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showPicturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.browserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chromeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.firefoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,7 +68,6 @@
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.testModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -119,27 +127,38 @@
             this.menuToolStripMenuItem.Text = "Menu";
             this.menuToolStripMenuItem.Click += new System.EventHandler(this.menuToolStripMenuItem_Click);
             // 
+            // testModeToolStripMenuItem
+            // 
+            this.testModeToolStripMenuItem.CheckOnClick = true;
+            this.testModeToolStripMenuItem.Name = "testModeToolStripMenuItem";
+            this.testModeToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.testModeToolStripMenuItem.Text = "Test Mode";
+            this.testModeToolStripMenuItem.Click += new System.EventHandler(this.testModeToolStripMenuItem_Click);
+            // 
             // hideOnStartToolStripMenuItem
             // 
+            this.hideOnStartToolStripMenuItem.Checked = true;
+            this.hideOnStartToolStripMenuItem.CheckOnClick = true;
+            this.hideOnStartToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Unchecked;
             this.hideOnStartToolStripMenuItem.Name = "hideOnStartToolStripMenuItem";
-            this.hideOnStartToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
+            this.hideOnStartToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.hideOnStartToolStripMenuItem.Text = "Hide on start";
             this.hideOnStartToolStripMenuItem.Click += new System.EventHandler(this.hideOnStartToolStripMenuItem_Click);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // showPicturesToolStripMenuItem
             // 
             this.showPicturesToolStripMenuItem.CheckOnClick = true;
             this.showPicturesToolStripMenuItem.Name = "showPicturesToolStripMenuItem";
-            this.showPicturesToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
+            this.showPicturesToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.showPicturesToolStripMenuItem.Text = "Show pictures";
             this.showPicturesToolStripMenuItem.Click += new System.EventHandler(this.showPicturesToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // browserToolStripMenuItem
             // 
@@ -354,14 +373,6 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Visible = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
-            // testModeToolStripMenuItem
-            // 
-            this.testModeToolStripMenuItem.CheckOnClick = true;
-            this.testModeToolStripMenuItem.Name = "testModeToolStripMenuItem";
-            this.testModeToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.testModeToolStripMenuItem.Text = "Test Mode";
-            this.testModeToolStripMenuItem.Click += new System.EventHandler(this.testModeToolStripMenuItem_Click);
             // 
             // Form1
             // 

@@ -1,28 +1,27 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Drawing;
 using MyVegasBot.Properties;
-using System.Text.RegularExpressions;
 
 namespace MyVegasBot
 {
-    class Calibrate
+    public class Calibrate
     {
-        //add for fbBorder or something, also incorporate more images, generalize the method CmpImg
-        public int[] Border()
+        public static int[] Border()
         {
-            int[] temp;
-            int[] coords = new int[4];
+            int[] temp1, temp2;
+            var coords = new int[4];
             Bitmap screen;
             Form1._Form1.Log("/Attempting to calibrate, please wait...");
             Thread.Sleep(1);
             while (coords[0] == 0 || coords[1] == 0 || coords[2] == 0 || coords[3] == 0)
             {
-                screen = Screen.Shot(); //Brings browser to the foreground and takes a screenshot
-                temp = CompareBitmaps.GetLocation(Resources.topBorder, screen, 0, 0, screen.Width, screen.Height); //get x-co & y-co from top border
-                coords[0] = temp[0]; coords[1] = temp[1];
-                coords[2] = CompareBitmaps.GetLocation(Resources.fbRight, screen, 0, 0, screen.Width, screen.Height)[0]; //get x-co from right side
-                coords[3] = CompareBitmaps.GetLocation(Resources.fbBottom, screen, 0, 0, screen.Width, screen.Height)[1]; //get y-co from bottom
+                screen = Screen.Shot();
+                temp1 = CompareBitmaps.GetLocation(Resources.topBorder, screen, 0, 0, screen.Width, screen.Height);
+                temp2 = CompareBitmaps.GetLocation(Resources.botBorder, screen, 0, 0, screen.Width, screen.Height);
+                coords[0] = temp1[0];
+                coords[1] = temp1[1];
+                coords[2] = temp2[0] + Resources.botBorder.Width;
+                coords[3] = temp2[1] + Resources.botBorder.Height;
                 Form1._Form1.Log("/.");
                 Thread.Sleep(5000);
             }

@@ -12,21 +12,18 @@ namespace MyVegasBot
         public string browser { get; set; }
         private string Game { get; set; }
         public int autoSpin { get; set; }
-        public bool hide { get; set; }
-        public Thread t { get; set; }
+        private Thread t { get; set; }
         public bool testMode { get; set; }
         public static Form1 _Form1;
         public Form1()
         {
             InitializeComponent();
             //Defualt browser is chrome.
-            this.browser = chromeToolStripMenuItem.Text;
+            browser = chromeToolStripMenuItem.Text;
             //Defualt Game is Excalibur.
-            this.Game = excaliburToolStripMenuItem.Text;
-            //Default hide on start value
-            this.hide = false;
+            Game = excaliburToolStripMenuItem.Text;
             //Defualt stop button state
-            this.Stop.Enabled = false;
+            Stop.Enabled = false;
             //Instance of form
             _Form1 = this;
             //testmode
@@ -47,16 +44,16 @@ namespace MyVegasBot
             {
                 if (Game == "Excalibur")
                 {
-                    Excalibur ex = new Excalibur();
+                    var ex = new Excalibur();
                     t = new Thread(ex.Start);
                     Log(string.Format("Starting {0}...", Game));
-                    this.AutoSpin.Enabled = false;
-                    this.Start.Enabled = false;
-                    this.Stop.Enabled = true;
+                    AutoSpin.Enabled = false;
+                    Start.Enabled = false;
+                    Stop.Enabled = true;
                     t.Start();
                     while (!t.IsAlive) ;
                     Thread.Sleep(1);
-                    if (hide) Hide();
+                    if (hideOnStartToolStripMenuItem.Checked) Hide();
                 }
                 //else if(Game == ???)
             }
@@ -68,23 +65,23 @@ namespace MyVegasBot
             {
                 Log(string.Format("{0} stopped...", Game));
                 t.Abort();
-                this.AutoSpin.Enabled = true;
-                this.Start.Enabled = true;
-                this.Stop.Enabled = false;
+                AutoSpin.Enabled = true;
+                Start.Enabled = true;
+                Stop.Enabled = false;
             }
         }
         #region browsers
-            /// <summary>
-            /// Sets browser to Chrome.
-            /// </summary>
-            /// <param name="sender"></param>
-            /// <param name="e"></param>
+        /// <summary>
+        /// Sets browser to Chrome.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void chromeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.browser = chromeToolStripMenuItem.Text;
-            this.chromeToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.firefoxToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Unchecked;
-            this.internetExplorerToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Unchecked;
+            browser = chromeToolStripMenuItem.Text;
+            chromeToolStripMenuItem.CheckState = CheckState.Checked;
+            firefoxToolStripMenuItem.CheckState = CheckState.Unchecked;
+            internetExplorerToolStripMenuItem.CheckState = CheckState.Unchecked;
         }
         /// <summary>
         /// Sets browser to firefox.
@@ -93,10 +90,10 @@ namespace MyVegasBot
         /// <param name="e"></param>
         private void firefoxToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.browser = firefoxToolStripMenuItem.Text;
-            this.firefoxToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chromeToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Unchecked;
-            this.internetExplorerToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Unchecked;
+            browser = firefoxToolStripMenuItem.Text;
+            firefoxToolStripMenuItem.CheckState = CheckState.Checked;
+            chromeToolStripMenuItem.CheckState = CheckState.Unchecked;
+            internetExplorerToolStripMenuItem.CheckState = CheckState.Unchecked;
         }
         /// <summary>
         /// Sets browser to Internet Explorer.
@@ -105,10 +102,10 @@ namespace MyVegasBot
         /// <param name="e"></param>
         private void internetExplorerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.browser = "IEXPLORE";
-            this.internetExplorerToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.firefoxToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Unchecked;
-            this.chromeToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Unchecked;
+            browser = "IEXPLORE";
+            internetExplorerToolStripMenuItem.CheckState = CheckState.Checked;
+            firefoxToolStripMenuItem.CheckState = CheckState.Unchecked;
+            chromeToolStripMenuItem.CheckState = CheckState.Unchecked;
         }
         #endregion
 
@@ -125,39 +122,30 @@ namespace MyVegasBot
         
         private void excaliburToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Game = excaliburToolStripMenuItem.Text;
-            this.excaliburToolStripMenuItem.CheckState = CheckState.Checked;
-            this.slotsToolStripMenuItem.CheckState = CheckState.Checked;
+            Game = excaliburToolStripMenuItem.Text;
+            excaliburToolStripMenuItem.CheckState = CheckState.Checked;
+            slotsToolStripMenuItem.CheckState = CheckState.Checked;
         }
         
         private void slotsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MyVegas.Icon = Resources.VslotsLogo;
-            this.Icon = Resources.VslotsLogo;
+            Icon = Resources.VslotsLogo;
         }
 
         private void blackJackToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MyVegas.Icon = Resources.VblackjackLogo;
-            this.Icon = Resources.VblackjackLogo;
+            Icon = Resources.VblackjackLogo;
         }
 
         private void hideOnStartToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(hideOnStartToolStripMenuItem.Checked == true)
-            {
-                hide = true;
-                hideOnStartToolStripMenuItem.CheckState = CheckState.Unchecked;
-            }
-            else
-            {
-                hide = false;
-                hideOnStartToolStripMenuItem.CheckState = CheckState.Checked;
-            }     
+                
         }
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Show();
+            Show();
         }
         #endregion
         private void AutoSpin_SelectedIndexChanged(object sender, EventArgs e)
@@ -170,27 +158,29 @@ namespace MyVegasBot
         {
             if (WindowState == FormWindowState.Minimized)
             {
-                this.Hide();
+                Hide();
             }
         }
-        public void MoveCursorAndClick(int x, int y)
+        public static void MoveCursorAndClick(int x, int y)
         {
             // Set the Current cursor, move the cursor's Position
-            Cursor = new Cursor(Cursor.Current.Handle);
-            Cursor.Position = new Point(x, y);
-            Thread.Sleep(500);
-            DllStuff.LeftClick();
+            if (x != 0 && y != 0)
+            {
+                Cursor.Position = new Point(x, y);
+                Thread.Sleep(500);
+                DllStuff.LeftClick();
+            }
         }
         private void MyVegas_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            this.Show();
-            this.WindowState = FormWindowState.Normal;
+            Show();
+            WindowState = FormWindowState.Normal;
         }
         public void Log(string s)
         {
             if (InvokeRequired)
             {
-                this.Invoke(new Action<string>(Log), new object[] { s });
+                Invoke(new Action<string>(Log), new object[] { s });
                 return;
             }
 
@@ -203,42 +193,36 @@ namespace MyVegasBot
                 s = s.Substring(1);
             }
             textBox1.AppendText(s);
+            //if(hide)
+                MyVegas.ShowBalloonTip(1000, "", s, ToolTipIcon.None);
         }
 
         private void showPicturesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(showPicturesToolStripMenuItem.CheckState == CheckState.Checked)
+            if (showPicturesToolStripMenuItem.CheckState == CheckState.Checked)
             {
                 pictureBox1.Enabled = true;
                 pictureBox2.Enabled = true;
                 pictureBox1.Visible = true;
                 pictureBox2.Visible = true;
-                this.ClientSize = new System.Drawing.Size(ClientSize.Width + pictureBox1.Bounds.Width, 300);
+                ClientSize = new Size(ClientSize.Width + pictureBox1.Bounds.Width, 300);
             }
-            else if(showPicturesToolStripMenuItem.CheckState == CheckState.Unchecked)
+            else if (showPicturesToolStripMenuItem.CheckState == CheckState.Unchecked)
             {
                 pictureBox1.Enabled = false;
                 pictureBox2.Enabled = false;
                 pictureBox1.Visible = false;
                 pictureBox2.Visible = false;
-                this.ClientSize = new System.Drawing.Size(ClientSize.Width - pictureBox1.Bounds.Width, 300);
+                ClientSize = new Size(ClientSize.Width - pictureBox1.Bounds.Width, 300);
             }
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            using (Form1 newForm = new Form1())
-            {
-                newForm.ShowDialog();
-            }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            using (Form1 newForm = new Form1())
-            {
-                newForm.ShowDialog();
-            }
         }
 
         private void testModeToolStripMenuItem_Click(object sender, EventArgs e)
