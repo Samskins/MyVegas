@@ -193,7 +193,7 @@ namespace MyVegasBot
                 s = s.Substring(1);
             }
             textBox1.AppendText(s);
-            //if(hide)
+            if(!Visible)
                 MyVegas.ShowBalloonTip(1000, "", s, ToolTipIcon.None);
         }
 
@@ -205,7 +205,7 @@ namespace MyVegasBot
                 pictureBox2.Enabled = true;
                 pictureBox1.Visible = true;
                 pictureBox2.Visible = true;
-                ClientSize = new Size(ClientSize.Width + pictureBox1.Bounds.Width, 300);
+                ClientSize = new Size(ClientSize.Width + pictureBox1.Bounds.Width, ClientSize.Height);
             }
             else if (showPicturesToolStripMenuItem.CheckState == CheckState.Unchecked)
             {
@@ -213,7 +213,7 @@ namespace MyVegasBot
                 pictureBox2.Enabled = false;
                 pictureBox1.Visible = false;
                 pictureBox2.Visible = false;
-                ClientSize = new Size(ClientSize.Width - pictureBox1.Bounds.Width, 300);
+                ClientSize = new Size(ClientSize.Width - pictureBox1.Bounds.Width, ClientSize.Height);
             }
         }
 

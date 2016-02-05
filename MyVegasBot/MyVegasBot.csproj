@@ -94,73 +94,16 @@
     <Folder Include="BlackJack\Images\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Slots\Excalibur\Images\fbBanner.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Slots\Excalibur\Images\fbBottom.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Slots\Excalibur\Images\fbRight.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Slots\Excalibur\Images\100.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Slots\Excalibur\Images\200.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Slots\Excalibur\Images\checkbox.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Slots\Excalibur\Images\exit.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Slots\Excalibur\Images\freeSpinWinnings.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Slots\Excalibur\Images\jackpot.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Slots\Excalibur\Images\knightDate.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Slots\Excalibur\Images\knightFight.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Slots\Excalibur\Images\OK.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Slots\Excalibur\Images\OKAY.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Slots\Excalibur\Images\sendGift.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Slots\Excalibur\Images\start.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Slots\Excalibur\Images\VslotsLogo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Slots\Excalibur\Images\topBorder.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Slots\Excalibur\Images\VblackjackLogo.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Slots\Excalibur\Images\10.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Slots\Excalibur\Images\25.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Slots\Excalibur\Images\50.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Slots\Excalibur\Images\500.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Slots\Excalibur\Images\excalibur.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Slots\Excalibur\Images\start.bmp" />
@@ -182,30 +125,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Slots\Excalibur\Images\excalibur.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Slots\Excalibur\Images\1001.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Slots\Excalibur\Images\2001.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Slots\Excalibur\Images\101.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Slots\Excalibur\Images\251.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Slots\Excalibur\Images\1002.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Slots\Excalibur\Images\2002.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Slots\Excalibur\Images\102.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Slots\Excalibur\Images\252.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Slots\Excalibur\Images\10.bmp" />
