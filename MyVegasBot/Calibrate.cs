@@ -26,6 +26,7 @@ namespace MyVegasBot
                 Thread.Sleep(5000);
             }
             Form1._Form1.Log("Calibration succeeded.");
+            Form1._Form1.Log(string.Format("Border found at {0},{1} X {2},{3}",coords[0], coords[1], coords[2], coords[3]));
             return coords;
         }
     }

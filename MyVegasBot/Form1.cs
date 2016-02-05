@@ -161,12 +161,12 @@ namespace MyVegasBot
                 Hide();
             }
         }
-        public static void MoveCursorAndClick(int x, int y)
+        public static void MoveCursorAndClick(int x, int y, int xOff, int yOff)
         {
             // Set the Current cursor, move the cursor's Position
             if (x != 0 && y != 0)
             {
-                Cursor.Position = new Point(x, y);
+                Cursor.Position = new Point(x + xOff, y + yOff);
                 Thread.Sleep(500);
                 DllStuff.LeftClick();
             }

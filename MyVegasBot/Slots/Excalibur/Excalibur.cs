@@ -97,7 +97,7 @@ namespace MyVegasBot.Slots.Excalibur
             switch (img)
             {
                 case "start":
-                    Form1.MoveCursorAndClick(cursorCoords[0] + bmp.Width / 2, cursorCoords[1] + bmp.Height / 2);
+                    Form1.MoveCursorAndClick(cursorCoords[0], cursorCoords[1], bmp.Width / 2, bmp.Height / 2);
 
                     FindAndClick("_" + (Form1._Form1.autoSpin));
                     break;
@@ -107,11 +107,11 @@ namespace MyVegasBot.Slots.Excalibur
 
                         if (rnd.Next(2) == 0)
                         {
-                            Form1.MoveCursorAndClick(cursorCoords[0] + bmp.Width / 5, cursorCoords[1] + bmp.Height / 2);
+                            Form1.MoveCursorAndClick(cursorCoords[0], cursorCoords[1], bmp.Width / 4, bmp.Height / 2);
                         }
                         else
                         {
-                            Form1.MoveCursorAndClick(cursorCoords[0] + bmp.Width * (4 / 5), cursorCoords[1] + bmp.Height / 2);
+                            Form1.MoveCursorAndClick(cursorCoords[0], cursorCoords[1], bmp.Width * (3 / 4), bmp.Height / 2);
                         }
                         Thread.Sleep(7000);
                         FindAndClick("OK");
@@ -123,11 +123,11 @@ namespace MyVegasBot.Slots.Excalibur
 
                         if (rnd.Next(2) == 0)
                         {
-                            Form1.MoveCursorAndClick(cursorCoords[0] + bmp.Width / 5, cursorCoords[1] + bmp.Height / 2);
+                            Form1.MoveCursorAndClick(cursorCoords[0], cursorCoords[1], bmp.Width / 4, bmp.Height / 2); ;
                         }
                         else
                         {
-                            Form1.MoveCursorAndClick(cursorCoords[0] + bmp.Width * (4 / 5), cursorCoords[1] + bmp.Height / 2);
+                            Form1.MoveCursorAndClick(cursorCoords[0], cursorCoords[1], bmp.Width * (3 / 4), bmp.Height / 2);
                         }
                         Thread.Sleep(7000);
                         FindAndClick("exit");
@@ -157,7 +157,7 @@ namespace MyVegasBot.Slots.Excalibur
             s = Screen.Shot();
             rmGetBitmap = (Bitmap)rm.GetObject(str);
             cursorCoords = CompareBitmaps.GetLocation(rmGetBitmap, s, screenCoords[0], screenCoords[1], screenCoords[2], screenCoords[3]);
-            Form1.MoveCursorAndClick(cursorCoords[0] + rmGetBitmap.Width / 2, cursorCoords[1] + rmGetBitmap.Height / 2);
+            Form1.MoveCursorAndClick(cursorCoords[0], cursorCoords[1], rmGetBitmap.Width / 2, rmGetBitmap.Height / 2);
         }
     }
 }
