@@ -17,7 +17,7 @@ namespace MyVegasBot
         public static int[] GetLocation(Bitmap smallImg, Bitmap bigImg, int topX, int topY, int botX, int botY)
         {
             int[] result = new int[2];
-            int max = 0, foundX = 0, foundY = 0, maxX = 0, maxY = 0, c = 0, d;
+            int max = 0, foundX = 0, foundY = 0, maxX = 0, maxY = 0, c = 0, d, match = 0;
             Form1._Form1.pictureBox1.Image = bigImg;
             Form1._Form1.pictureBox2.Image = smallImg;
             LockBitmap lockSmall = new LockBitmap(smallImg);
@@ -28,45 +28,49 @@ namespace MyVegasBot
                 d = 0; //reset small image search to the first x value
                 for (int x = topX; x < (botX - lockSmall.Width) - 1; x++)  //borders only the area neccesary
                 {
-                    if(lockBig.GetPixel(x, y) != lockSmall.GetPixel(d, c))
+                    if(lockBig.GetPixel(x, y) != lockSmall.GetPixel(d, c)) //no matches
                     {
                         d = 0;
+                        match = 0;
                         continue;
                     }
                     else
                     {
-                        if(d == 0) //max candidate
+                        if(match == 0) //max candidate
                         {
                             foundX = x;
                             foundY = y;
                         }
-                        
-                        if(d > max)
+                        match++;
+                        //checks for highest compatibility with image
+                        if(match > max)  //maintain max x and y coordinates for results
                         {
-                            max = d;
+                            max = match;
                             maxX = foundX;
                             maxY = foundY;
                         }
 
-                        if (d == lockSmall.Width)  //resets search to beginning of next line
+                        if (d == lockSmall.Width - 1)  //resets search to beginning of next line
                         {
                             c++;
                             topX = maxX;
                             break;
                         } 
                         else
-
-                        d++;
+                            d++;
+                        
                     }
                 }
+                if (c == lockSmall.Height)
+                    break;
             }
             
-            //check if atleast one row of the image was found competely
-            //if(max < lockSmall.Width)
-            //{
-            //    lockSmall.UnlockBits(); lockBig.UnlockBits();
-            //    return result;
-            //}
+            //check if atleast one row of the image was found completely
+            if(max < lockSmall.Width)
+            {
+                lockSmall.UnlockBits(); lockBig.UnlockBits();
+                return result;
+            }
 
             lockSmall.UnlockBits(); lockBig.UnlockBits();
             result[0] = maxX; result[1] = maxY;

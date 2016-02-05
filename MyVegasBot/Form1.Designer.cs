@@ -97,10 +97,6 @@
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuToolStripMenuItem,
-            this.browserToolStripMenuItem,
-            this.gameTypeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(280, 28);
@@ -109,11 +105,6 @@
             // 
             // menuToolStripMenuItem
             // 
-            this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.testModeToolStripMenuItem,
-            this.hideOnStartToolStripMenuItem,
-            this.showPicturesToolStripMenuItem,
-            this.exitToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
             this.menuToolStripMenuItem.Text = "Menu";
@@ -129,9 +120,7 @@
             // 
             // hideOnStartToolStripMenuItem
             // 
-            this.hideOnStartToolStripMenuItem.Checked = true;
             this.hideOnStartToolStripMenuItem.CheckOnClick = true;
-            this.hideOnStartToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Unchecked;
             this.hideOnStartToolStripMenuItem.Name = "hideOnStartToolStripMenuItem";
             this.hideOnStartToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.hideOnStartToolStripMenuItem.Text = "Hide on start";
@@ -154,10 +143,6 @@
             // 
             // browserToolStripMenuItem
             // 
-            this.browserToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.chromeToolStripMenuItem,
-            this.firefoxToolStripMenuItem,
-            this.internetExplorerToolStripMenuItem});
             this.browserToolStripMenuItem.Name = "browserToolStripMenuItem";
             this.browserToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
             this.browserToolStripMenuItem.Text = "Browser";
@@ -193,9 +178,6 @@
             // 
             // gameTypeToolStripMenuItem
             // 
-            this.gameTypeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.slotsToolStripMenuItem,
-            this.blackJackToolStripMenuItem});
             this.gameTypeToolStripMenuItem.Name = "gameTypeToolStripMenuItem";
             this.gameTypeToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
             this.gameTypeToolStripMenuItem.Text = "Game Type";
@@ -209,7 +191,7 @@
             this.excaliburToolStripMenuItem});
             this.slotsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("slotsToolStripMenuItem.Image")));
             this.slotsToolStripMenuItem.Name = "slotsToolStripMenuItem";
-            this.slotsToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            this.slotsToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.slotsToolStripMenuItem.Text = "Slots";
             this.slotsToolStripMenuItem.Click += new System.EventHandler(this.slotsToolStripMenuItem_Click);
             // 
@@ -218,9 +200,9 @@
             this.excaliburToolStripMenuItem.Checked = true;
             this.excaliburToolStripMenuItem.CheckOnClick = true;
             this.excaliburToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.excaliburToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("excaliburToolStripMenuItem.Image")));
+            this.excaliburToolStripMenuItem.Image = global::MyVegasBot.Properties.Resources.excalibur;
             this.excaliburToolStripMenuItem.Name = "excaliburToolStripMenuItem";
-            this.excaliburToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
+            this.excaliburToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.excaliburToolStripMenuItem.Text = "Excalibur";
             this.excaliburToolStripMenuItem.Click += new System.EventHandler(this.excaliburToolStripMenuItem_Click);
             // 
@@ -229,7 +211,7 @@
             this.blackJackToolStripMenuItem.CheckOnClick = true;
             this.blackJackToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("blackJackToolStripMenuItem.Image")));
             this.blackJackToolStripMenuItem.Name = "blackJackToolStripMenuItem";
-            this.blackJackToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            this.blackJackToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.blackJackToolStripMenuItem.Text = "BlackJack";
             this.blackJackToolStripMenuItem.Click += new System.EventHandler(this.blackJackToolStripMenuItem_Click);
             // 
