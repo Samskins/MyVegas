@@ -234,5 +234,15 @@ namespace MyVegasBot
                 testMode = false;
 
         }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+        }
     }
 }
