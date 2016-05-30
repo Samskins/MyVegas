@@ -6,6 +6,7 @@ using System.Threading;
 
 namespace MyVegasBot
 {
+    [Obsolete("Not used anymore", true)]
     public class Screen
     {
         private static IntPtr handle { get; set; }

@@ -3,6 +3,7 @@ using System.Drawing;
 
 namespace MyVegasBot
 {
+    [Obsolete("Not used anymore", true)]
     class CompareBitmaps
     {
       /// <summary>

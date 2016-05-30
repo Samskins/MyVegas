@@ -1,9 +1,11 @@
 ﻿using System.Threading;
 using System.Drawing;
 using MyVegasBot.Properties;
+using System;
 
 namespace MyVegasBot
 {
+    [Obsolete("Not used anymore", true)]
     public class Calibrate
     {
         public static int[] Border()

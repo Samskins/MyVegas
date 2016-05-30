@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using MyVegasBot.Slots.Excalibur;
 using System.Threading;
 using MyVegasBot.Properties;
+using AutoHotkey.Interop;
 
 namespace MyVegasBot
 {
@@ -15,6 +16,9 @@ namespace MyVegasBot
         private Thread t { get; set; }
         public bool testMode { get; set; }
         public static Form1 _Form1;
+        //autohotkey initializer
+        AutoHotkeyEngine ahk = new AutoHotkeyEngine();
+
         public Form1()
         {
             InitializeComponent();
@@ -36,6 +40,7 @@ namespace MyVegasBot
         }
         private void Start_Button(object sender, EventArgs e)
         {
+            InitializeGame begin = new InitializeGame();
             if (autoSpin == 0)
             {
                 Log("Please set auto-spin value.");
@@ -44,7 +49,7 @@ namespace MyVegasBot
             {
                 if (Game == "Excalibur")
                 {
-                    var ex = new Excalibur();
+                    Excalibur ex = new Excalibur();
                     t = new Thread(ex.Start);
                     Log(string.Format("Starting {0}...", Game));
                     AutoSpin.Enabled = false;
@@ -168,7 +173,6 @@ namespace MyVegasBot
             {
                 Cursor.Position = new Point(x + xOff, y + yOff);
                 Thread.Sleep(500);
-                DllStuff.LeftClick();
             }
         }
         private void MyVegas_MouseDoubleClick(object sender, MouseEventArgs e)

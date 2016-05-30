@@ -4,6 +4,7 @@ using System.Windows.Forms;
 
 namespace MyVegasBot
 {
+    [Obsolete("Not used anymore", true)]
     class DllStuff
     {
         private const int ALT = 0xA4;

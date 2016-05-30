@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 
 namespace MyVegasBot
 {
+    [Obsolete("Not used anymore", true)]
     public class LockBitmap
     {
         private readonly Bitmap source = null;

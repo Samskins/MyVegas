@@ -25,3 +25,14 @@ D:\Users\spric\Source\Repos\MyVegas\MyVegasBot\obj\Debug\MyVegasBot.csprojResolv
 D:\Users\spric\Source\Repos\MyVegas\MyVegasBot\obj\Debug\MyVegasBot.Form1.resources
 D:\Users\spric\Source\Repos\MyVegas\MyVegasBot\obj\Debug\MyVegasBot.Properties.Resources.resources
 D:\Users\spric\Source\Repos\MyVegas\MyVegasBot\obj\Debug\MyVegasBot.csproj.GenerateResource.Cache
+C:\Users\spric\Source\Repos\MyVegas\MyVegasBot\bin\Debug\MyVegasBot.exe.config
+C:\Users\spric\Source\Repos\MyVegas\MyVegasBot\bin\Debug\MyVegasBot.exe
+C:\Users\spric\Source\Repos\MyVegas\MyVegasBot\bin\Debug\MyVegasBot.pdb
+C:\Users\spric\Source\Repos\MyVegas\MyVegasBot\bin\Debug\AutoHotkey.Interop.dll
+C:\Users\spric\Source\Repos\MyVegas\MyVegasBot\bin\Debug\AutoHotkey.Interop.xml
+C:\Users\spric\Source\Repos\MyVegas\MyVegasBot\obj\Debug\MyVegasBot.Form1.resources
+C:\Users\spric\Source\Repos\MyVegas\MyVegasBot\obj\Debug\MyVegasBot.Properties.Resources.resources
+C:\Users\spric\Source\Repos\MyVegas\MyVegasBot\obj\Debug\MyVegasBot.csproj.GenerateResource.Cache
+C:\Users\spric\Source\Repos\MyVegas\MyVegasBot\obj\Debug\MyVegasBot.exe
+C:\Users\spric\Source\Repos\MyVegas\MyVegasBot\obj\Debug\MyVegasBot.pdb
+C:\Users\spric\Source\Repos\MyVegas\MyVegasBot\obj\Debug\MyVegasBot.csprojResolveAssemblyReference.cache

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Resources;
 using System.Reflection;
 using System.Diagnostics;
+using AutoHotkey.Interop;
 
 namespace MyVegasBot.Slots.Excalibur
 {
@@ -19,17 +20,15 @@ namespace MyVegasBot.Slots.Excalibur
         private Bitmap stuck { get; set; }
         private TimeSpan ts { get; set; }
         private Stopwatch stopWatch { get; set; }
-        private Dictionary<string, int> images { get; set; }
+        AutoHotkeyEngine ahk = new AutoHotkeyEngine();
         private readonly ResourceManager rm = new ResourceManager("MyVegasBot.Properties.Resources", Assembly.GetExecutingAssembly());
+
         public void Start()
         {
             stopWatch = new Stopwatch();
             stopWatch.Start();
             ts = stopWatch.Elapsed;
             screenCoords = new int[4];
-            stuck = Screen.Shot();
-            screenCoords = MyVegasBot.Calibrate.Border();
-            enterImages();
 
             while (true)
             {
@@ -41,55 +40,9 @@ namespace MyVegasBot.Slots.Excalibur
 
         private void Search()
         {
-            s = Screen.Shot();
-            foreach (var image in images.ToList())
-            {
-                rmGetBitmap = (Bitmap)rm.GetObject(image.Key);
-                cursorCoords = CompareBitmaps.GetLocation(rmGetBitmap, s, screenCoords[0], screenCoords[1], screenCoords[2], screenCoords[3]);
-                Form1._Form1.Log(string.Format("Searching for {0}...", image.Key));
-                if (cursorCoords[0] != 0 || cursorCoords[1] != 0)
-                {
-                    count = 0;
-                    Form1._Form1.Log(string.Format("Found {0}...", image.Key));
-                    images[image.Key]++;
-                    ImageLogic(image.Key, rmGetBitmap);
-                }
-                else
-                {
-                    if (count % 21 == 0)
-                    {
-                        stuck = Screen.Shot();
-                    }
-                    count++;
-                }
-            }
-
-            if (ts.Seconds >= 60 && CompareBitmaps.isEqual(stuck, s))
-            {
-                stopWatch.Restart();
-                Form1._Form1.Log("One minute without activity, checking for issues...");
-                var s1 = Screen.Shot();
-                Thread.Sleep(3000);
-                var s2 = Screen.Shot();
-                if (CompareBitmaps.isEqual(stuck, s1) || CompareBitmaps.isEqual(stuck, s2))
-                {
-                    FindAndClick("OK");
-                    FindAndClick("OKAY");
-                    FindAndClick("exit");
-                }
-            }
-        }
-
-        private void enterImages()
-        {
-            images = new Dictionary<string, int>();
-            images.Add("start", 0);
-            images.Add("knightFight", 0);
-            images.Add("knightDate", 0);
-            images.Add("freeSpinWinnings", 0);
-            images.Add("sendGift", 0);
-            images.Add("checkbox", 0);
-            images.Add("jackpot", 0);
+            //input screenCoords below
+            ahk.ExecRaw(@"ImageSearch, OutX, OutY, 400, 200, 1200, 900, *% n % % A_WorkingDir %\images\% image %.PNG");
+            //save output (OutX, OutY) to variable
         }
 
         private void ImageLogic(string img, Bitmap bmp)
@@ -154,9 +107,7 @@ namespace MyVegasBot.Slots.Excalibur
         }
         private void FindAndClick(string str)
         {
-            s = Screen.Shot();
             rmGetBitmap = (Bitmap)rm.GetObject(str);
-            cursorCoords = CompareBitmaps.GetLocation(rmGetBitmap, s, screenCoords[0], screenCoords[1], screenCoords[2], screenCoords[3]);
             Form1.MoveCursorAndClick(cursorCoords[0], cursorCoords[1], rmGetBitmap.Width / 2, rmGetBitmap.Height / 2);
         }
     }
