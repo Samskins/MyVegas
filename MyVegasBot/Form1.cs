@@ -40,6 +40,7 @@ namespace MyVegasBot
         }
         private void Start_Button(object sender, EventArgs e)
         {
+            ahk.ExecRaw("Msgbox, " + Environment.CurrentDirectory);
             InitializeGame begin = new InitializeGame();
             if (autoSpin == 0)
             {
