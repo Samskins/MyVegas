@@ -18,6 +18,8 @@ namespace MyVegasBot
         public Form1()
         {
             InitializeComponent();
+
+            AutoSpin.SelectedIndex = 0;
             //Defualt browser is chrome.
             browser = chromeToolStripMenuItem.Text;
             //Defualt Game is Excalibur.
@@ -244,5 +246,7 @@ namespace MyVegasBot
         {
             textBox1.Clear();
         }
+
+
     }
 }
