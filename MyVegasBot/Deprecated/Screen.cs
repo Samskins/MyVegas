@@ -11,6 +11,7 @@ namespace MyVegasBot
     {
         private static IntPtr handle { get; set; }
         public static Bitmap fullScreen { get; set; }
+
         private static void ActivateWin(string processName)
         {
             var p = Process.GetProcessesByName(processName);
